@@ -1,6 +1,13 @@
 <?php
 include ("function/graph_bar_line.php");
-$getGraphBarLineData = get_data_bar_line();
+
+if (isset($_GET['type'])){
+    $type = $_GET['type'];
+}
+
+echo $type;
+
+$getGraphBarLineData = get_data_bar_line($type);
 $background_graph = "#181818";
 //var_dump($getGraphBarLineData);
 
@@ -14,7 +21,15 @@ $tableauCAComplet = array
 
 
 foreach ($getGraphBarLineData as $CA){
-    $Date = $CA['Heure'];
+    if ($type == 'minute'){
+        $Date = $CA['Minute'];
+    } elseif ($type == 'heure') {
+        $Date = $CA['Heure'];
+    } else {
+        $Date = $CA['Jour'];
+    }
+
+    
     $Actuals = $CA['Actuals'];
     $Predictions = $CA['Predictions'];
 
@@ -36,8 +51,11 @@ foreach ($getGraphBarLineData as $CA){
     <title>Document</title>
 </head>
 <body>
-<form action="  "></form>
-<input type="">
+<a href="vue_graph_bar_line.php?type=day">Jour</a>
+<a href="vue_graph_bar_line.php?type=heure">Heure</a>
+<a href="vue_graph_bar_line.php?type=minute">Minute</a>
+
+
 
 
 <div id='FullRetardCAGraph' style="width:97%;max-height:450px"></div>
