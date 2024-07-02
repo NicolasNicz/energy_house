@@ -5,7 +5,6 @@ if (isset($_GET['type'])){
     $type = $_GET['type'];
 }
 
-echo $type;
 
 $getGraphBarLineData = get_data_bar_line($type);
 $background_graph = "#181818";
@@ -28,7 +27,6 @@ foreach ($getGraphBarLineData as $CA){
     } else {
         $Date = $CA['Jour'];
     }
-
     
     $Actuals = $CA['Actuals'];
     $Predictions = $CA['Predictions'];
@@ -48,145 +46,156 @@ foreach ($getGraphBarLineData as $CA){
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="js\plotly-2.27.0.min.js"></script>
+    <link rel="stylesheet" href="styles\general.css" />
     <title>Document</title>
 </head>
 <body>
-<a href="vue_graph_bar_line.php?type=day">Jour</a>
-<a href="vue_graph_bar_line.php?type=heure">Heure</a>
-<a href="vue_graph_bar_line.php?type=minute">Minute</a>
+
+<div id="widget-category-container">
+  <a class="category-container" id="a-client" href="vue_graph_bar_line.php?type=day">
+  Jour
+  </a>
+  <a class="category-container" id="a-programme" href="vue_graph_bar_line.php?type=heure">
+  Minute
+  </a>
+  <a class="category-container" id="a-resp" href="vue_graph_bar_line.php?type=minute">
+  Heure
+  </a>
+</div>
 
 
 
+<div class="widget-container">
+  <div id='FullRetardCAGraph' style="max-height:550px"></div>
+  <script>
+      //Script de paramétrage du graphique
+        <?php
+          $firstcolum=true;
+          // Exemple de ce que va afficher la fonction ci dessous :
+          // X: ['client1', 'client2', 'client3'],
 
-<div id='FullRetardCAGraph' style="width:97%;max-height:450px"></div>
-<script>
-    //Script de paramétrage du graphique
+          $tableX = "xValue= [";
+
+          foreach ($tableauCAComplet['Date'] as $CA){
+            $tableX .="'$CA', ";
+          }
+          $tableX =substr($tableX, 0, -2);
+          $tableX .="];";
+          echo $tableX;
+
+          // Exemple de ce que va afficher la fonction ci dessous :
+          // Y: [20, 14, 23],
+
+          $tableY = "yValue= [";
+
+          foreach ($tableauCAComplet['Actuals'] as $CA){
+            if (isset($CA)){
+              $LeCA=$CA;
+            }
+            else $LeCA=0;
+            $tableY .="$LeCA, ";
+          }
+          $tableY =substr($tableY, 0, -2);
+          $tableY .="];";
+          echo $tableY;
+          
+        ?>
+
+      var Réalisé = {
+      x: xValue,
+      y: yValue,
+      name: 'Réalisé',
+      orientation: 'v',
+      marker: {
+        color: '#FABF8F',
+        width: 1
+      },
+      type: 'bar'
+      };
+
+                        
       <?php
-        $firstcolum=true;
-        // Exemple de ce que va afficher la fonction ci dessous :
-        // X: ['client1', 'client2', 'client3'],
+          // Exemple de ce que va afficher la fonction ci dessous :
+          // X: ['client1', 'client2', 'client3'],
 
-        $tableX = "xValue= [";
+          $tableX = "xValue= [";
 
-        foreach ($tableauCAComplet['Date'] as $CA){
-          $tableX .="'$CA', ";
-        }
-        $tableX =substr($tableX, 0, -2);
-        $tableX .="];";
-        echo $tableX;
-
-        // Exemple de ce que va afficher la fonction ci dessous :
-        // Y: [20, 14, 23],
-
-        $tableY = "yValue= [";
-
-        foreach ($tableauCAComplet['Actuals'] as $CA){
-          if (isset($CA)){
-            $LeCA=$CA;
+          foreach ($tableauCAComplet['Date'] as $CA){
+            $tableX .="'$CA', ";
           }
-          else $LeCA=0;
-          $tableY .="$LeCA, ";
-        }
-        $tableY =substr($tableY, 0, -2);
-        $tableY .="];";
-        echo $tableY;
-        
-      ?>
+          $tableX =substr($tableX, 0, -2);
+          $tableX .="];";
+          echo $tableX;
 
-    var Réalisé = {
-    x: xValue,
-    y: yValue,
-    name: 'Réalisé',
-    orientation: 'v',
-    marker: {
-      color: '#FABF8F',
-      width: 1
-    },
-    type: 'bar'
-    };
+          // Exemple de ce que va afficher la fonction ci dessous :
+          // Y: [20, 14, 23],
 
-                      
-    <?php
-        // Exemple de ce que va afficher la fonction ci dessous :
-        // X: ['client1', 'client2', 'client3'],
+          $tableY = "yValue= [";
 
-        $tableX = "xValue= [";
-
-        foreach ($tableauCAComplet['Date'] as $CA){
-          $tableX .="'$CA', ";
-        }
-        $tableX =substr($tableX, 0, -2);
-        $tableX .="];";
-        echo $tableX;
-
-        // Exemple de ce que va afficher la fonction ci dessous :
-        // Y: [20, 14, 23],
-
-        $tableY = "yValue= [";
-
-        foreach ($tableauCAComplet['Predictions'] as $CA){
-          if (isset($CA)){
-            $LeCA=$CA;
+          foreach ($tableauCAComplet['Predictions'] as $CA){
+            if (isset($CA)){
+              $LeCA=$CA;
+            }
+            else $LeCA=0;
+            $tableY .="$LeCA, ";
           }
-          else $LeCA=0;
-          $tableY .="$LeCA, ";
-        }
-        $tableY =substr($tableY, 0, -2);
-        $tableY .="];";
-        echo $tableY;
-        
-      ?>
-    var Prévision = {
-    x: xValue,
-    y: yValue,
-    name: 'Prévision',
-    orientation: 'v',
-    marker: {
-      color: '#8DB4E2',
-      width: 1
-    },
-    type: 'scatter',
-    line:{
-      width:3
-    }
-    };
-
-    var data = [Réalisé, Prévision];
-
-    var layout = {
-      title: {
-        text:"<b> Consommation d'energie par heure en WattHeure  </b>",
-        font:{
-          family:'Segoe UI',
-          size:'20',
-          color:'#fff'
-        }
+          $tableY =substr($tableY, 0, -2);
+          $tableY .="];";
+          echo $tableY;
+          
+        ?>
+      var Prévision = {
+      x: xValue,
+      y: yValue,
+      name: 'Prévision',
+      orientation: 'v',
+      marker: {
+        color: '#8DB4E2',
+        width: 1
       },
-      font:{
-          color:'#fff'
-        },
-
-      plot_bgcolor: '<?=$background_graph?>',
-      paper_bgcolor: '<?=$background_graph?>',
-      barmode: 'stack',
-      xaxis: {
-        gridcolor:'#504f4f',
-        automargin:true,
-        type: 'category'
-      },
-      yaxis: {
-        gridcolor:'#504f4f',
-        ticksuffix:' Wh'
+      type: 'scatter',
+      line:{
+        width:3
       }
-    };
+      };
 
-    var config = {
-      displaylogo: false,
-      responsive: true, 
-      locale: 'fr',
-    }
+      var data = [Réalisé, Prévision];
 
-    Plotly.newPlot('FullRetardCAGraph', data, layout, config);
-  </script>
+      var layout = {
+        title: {
+          text:"<b> Consommation d'energie par heure en WattHeure  </b>",
+          font:{
+            family:'Segoe UI',
+            size:'20',
+            color:'#fff'
+          }
+        },
+        font:{
+            color:'#fff'
+          },
+
+        plot_bgcolor: '<?=$background_graph?>',
+        paper_bgcolor: '<?=$background_graph?>',
+        barmode: 'stack',
+        xaxis: {
+          gridcolor:'#504f4f',
+          automargin:true,
+          type: 'category'
+        },
+        yaxis: {
+          gridcolor:'#504f4f',
+          ticksuffix:' Wh'
+        }
+      };
+
+      var config = {
+        displaylogo: false,
+        responsive: true, 
+        locale: 'fr',
+      }
+
+      Plotly.newPlot('FullRetardCAGraph', data, layout, config);
+    </script>
+  </div>
 </body>
 </html>

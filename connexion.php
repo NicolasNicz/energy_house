@@ -14,4 +14,5 @@ if (!$connexion)
 	echo "La connexion a échouée !";
 }
 
+$connexion->set_charset("utf8mb4");
 ?>
