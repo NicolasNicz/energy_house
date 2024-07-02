@@ -1,6 +1,6 @@
 <?php
 function get_data_bar_line(){
-    include ("../connexion.php");
+    require("connexion.php");
     $AllCharacter=array();
     $query = "SELECT DATE(Temps) as Day
                 , DATE_FORMAT(Temps, '%H') as Heure
