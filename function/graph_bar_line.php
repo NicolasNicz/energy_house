@@ -2,7 +2,7 @@
 function get_data_bar_line(){
     require("connexion.php");
     $AllCharacter=array();
-    $query = "SELECT DATE(Temps) as Day
+    $query = "SELECT DATE(Temps) as Date
                 , DATE_FORMAT(Temps, '%H') as Heure
                 , round(sum(Predictions),2) as Predictions
                 , round(sum(Actuals),2) as Actuals
