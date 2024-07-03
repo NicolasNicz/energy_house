@@ -87,8 +87,14 @@
             }
         };
 
+        // Configuration suplémentaire
+        var config = {
+            displaylogo: false,
+            responsive: true,
+        }
+
         // Tracer le diagramme
-        Plotly.newPlot('plot', [consommation], layout);
+        Plotly.newPlot('plot', [consommation], layout, config);
     </script>
 </body>
 
