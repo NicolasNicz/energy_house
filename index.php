@@ -37,17 +37,19 @@ if ($maj<$yesterday){
     update_credit($nbcredit, $dif_hier, $yesterday);
 }
 
+$dif_hier= 10;
 if ($dif_hier>=10){
     $difcredit = 10;
 } elseif ($dif_hier >= 0 && $dif_hier <10) {
     $difcredit = 5;
 } elseif ($dif_hier < 0 && $dif_hier > -10) {
-    $difcredit = - 5;
+    $difcredit = 0;
 } else{
-    $difcredit = - 10;
+    $difcredit = 0;
 }
 
 include ("header.php");
+
 ?>
 
 <div class="main-content">
@@ -56,12 +58,23 @@ include ("header.php");
             </header>
             <main>
                 <section id="home">
-                    <h2>Credit Actuel</h2>
-                    <p><?=$nbcredit?></p>
+                    <h2 style="text-align:center;">Credit Actuel</h2>
+                    <p class="credit"><?=$nbcredit?></p>
                 </section>
                 <section id="about">
                     <h2>Hier </h2>
-                    <p><?=$difcredit?></p>
+                    <?php if ($dif_hier>=0){
+                        echo "Félicitation ! Hier, vous avez consommés <b> $dif_hier Watt</b> en moins que prévu par rapport aux prédictions! <br>";
+                        echo "vous avez gagner $difcredit de crédits !";
+
+                    }else{
+                        $difafficher = $dif_hier - $dif_hier*2;
+                        $difafficher = round($difafficher, 2);
+                        echo "Attention ! Hier, vous avez consommés <b> $difafficher Watt </b> en trop par rapport aux prédictions! <br>";
+                        echo "vous ne gagnez aucun crédit !";
+                    
+                    }?>
+                    
                 </section>
                 <section id="services">
                     <h2>Astuce du jour !</h2>

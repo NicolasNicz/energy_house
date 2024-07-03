@@ -13,8 +13,10 @@
         <nav class="sidebar">
             <ul>
                 <li><a href="."><img src="styles/House.png" alt="Accueil" class="icon"></a></li>
-                <li><a href="vue_graph_bar_line.php?type=heure">graph bar line</a></li>
-                <li><a href="#services">Services</a></li>
+                <li><a href="vue_graph_bar_line.php?type=heure">Votre consommation <br> 
+                                                                Actuel / Prévu</a></li>
+                <li><a href="vue_graph_francais.php">Votre consommation par rapport <br>
+                                                    aux français</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
         </nav>

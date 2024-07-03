@@ -18,15 +18,22 @@ $tableauCAComplet = array
               'Actuals' => array()
             );
 
-
+if (isset($_POST['objectif'])){
+  $objectif = $_POST['objectif'];
+}
+else{
+  $objectif = 300;
+}
 
 foreach ($getGraphBarLineData as $CA){
     if ($type == 'minute'){
         $Date = $CA['Minute'];
     } elseif ($type == 'heure') {
+      
         $Date = $CA['Heure'];
     } else {
         $Date = $CA['Jour'];
+        $objectif = 0;
     }
     
     $Actuals = $CA['Actuals'];
@@ -49,6 +56,10 @@ include ("header.php");
       <h1>Votre Consommation Énergétique</h1>
     </header>
 
+    <form method="POST" action="vue_graph_bar_line.php?type=heure">
+      Objectif : <input name='objectif' type="text" value="<?=$objectif?>"> </input>
+    </form>
+    
 
 <div id="widget-category-container">
   <a class="category-container" id="a-client" href="vue_graph_bar_line.php?type=day">
@@ -56,9 +67,6 @@ include ("header.php");
   </a>
   <a class="category-container" id="a-programme" href="vue_graph_bar_line.php?type=heure">
   Heure
-  </a>
-  <a class="category-container" id="a-resp" href="vue_graph_bar_line.php?type=minute">
-  Minute
   </a>
 </div>
 
@@ -158,7 +166,49 @@ include ("header.php");
       }
       };
 
-      var data = [Réalisé, Prévision];
+
+      <?php
+          // Exemple de ce que va afficher la fonction ci dessous :
+          // X: ['client1', 'client2', 'client3'],
+
+          $tableX = "xValue= [";
+
+          foreach ($tableauCAComplet['Date'] as $CA){
+            $tableX .="'$CA', ";
+          }
+          $tableX =substr($tableX, 0, -2);
+          $tableX .="];";
+          echo $tableX;
+
+          // Exemple de ce que va afficher la fonction ci dessous :
+          // Y: [20, 14, 23],
+
+          $tableY = "yValue= [";
+
+          foreach ($tableauCAComplet['Predictions'] as $CA){
+            $tableY .="$objectif, ";
+          }
+          $tableY =substr($tableY, 0, -2);
+          $tableY .="];";
+          echo $tableY;
+          
+        ?>
+      var Objectif = {
+      x: xValue,
+      y: yValue,
+      name: 'Objectif',
+      orientation: 'v',
+      marker: {
+        color: 'green',
+        width: 1
+      },
+      type: 'scatter',
+      line:{
+        width:3
+      }
+      };
+
+      var data = [Réalisé, Prévision, Objectif];
 
       var layout = {
         title: {
@@ -196,5 +246,7 @@ include ("header.php");
       Plotly.newPlot('FullRetardCAGraph', data, layout, config);
     </script>
   </div>
+  
+
 </body>
 </html>
