@@ -1,6 +1,5 @@
 <head>
     <script src="https://cdn.plot.ly/plotly-2.32.0.min.js" charset="utf-8"></script>
-    <title></title>
 </head>
 <div id="myDiv" name="myDiv" class="myDiv"></div>
 <script>
@@ -9,10 +8,6 @@
         include("connexion.php");
 
         $json = [];
-        $valuesGood = [];
-        $valuesBad = [];
-        $valuesVeryGood = [];
-        $valuesMid = [];
     
         $res = mysqli_query($connexion, "SELECT * FROM energy_data");
         while($row=mysqli_fetch_assoc($res)){
@@ -35,9 +30,8 @@
         foreach ($valuesVeryGood as $key => $value) {
             $sum += $value;
         }
-        //array_push($json, $sum/count($valuesVeryGood));
+        array_push($json, $sum/count($valuesVeryGood));
         $nb = count($valuesVeryGood);
-        array_push($json, $nb);
         echo "console.log('Nb VG: $nb');";
 
         $total += $sum;
@@ -45,9 +39,8 @@
         foreach ($valuesGood as $key => $value) {
             $sum += $value;
         }
-        //array_push($json, $sum/count($valuesGood));
+        array_push($json, $sum/count($valuesGood));
         $nb = count($valuesGood);
-        array_push($json, $nb);
         echo "console.log('Nb G: $nb');";
 
         $total += $sum;
@@ -55,9 +48,8 @@
         foreach ($valuesMid as $key => $value) {
             $sum += $value;
         }
-        //array_push($json, $sum/count($valuesMid));
+        array_push($json, $sum/count($valuesMid));
         $nb = count($valuesMid);
-        array_push($json, $nb);
         echo "console.log('Nb M: $nb');";
 
         $total += $sum;
@@ -65,9 +57,8 @@
         foreach ($valuesBad as $key => $value) {
             $sum += $value;
         }
-        //array_push($json, $sum/count($valuesBad));
+        array_push($json, $sum/count($valuesBad));
         $nb = count($valuesBad);
-        array_push($json, $nb);
         echo "console.log('Nb B: $nb');";
 
         $total += $sum;
@@ -85,10 +76,7 @@
     var datas = [{
         "values": data, 
         "labels": ["Very Good", "Good", "Mid", "Bad"], 
-        "type": "pie",
-        "marker": {
-            "colors": ["green", "blue", "red", "darkred"]
-        }
+        "type": "pie"
     }];
 
     Plotly.newPlot('myDiv', datas, layout);
