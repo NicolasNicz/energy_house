@@ -21,6 +21,7 @@
                                                     aux français</a></li>
 
                 <li><a href="graph_pie_view.php">graph pie</a></li>
+                <li><a href="graph_aoe_view.php">graph aoe</a></li>
                 <li><a href="#services">Services</a></li>
 
                 <li><a href="#contact">Contact</a></li>
