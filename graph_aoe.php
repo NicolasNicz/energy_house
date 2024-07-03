@@ -75,8 +75,6 @@
 
         // Configuration du layout
         const layout = {
-            height: 600,
-            width: 1200,
             shapes: shapes,
             xaxis: {
                 title: 'Temps',
