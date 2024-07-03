@@ -50,3 +50,19 @@ div#widget-category-container {
    display: flex;
    justify-content: center;
 }
+
+.lecredit{
+   float: right;
+   font-size: 45px;
+   margin-bottom: 20px;
+   font-weight: bold;
+   color: green;
+}
+
+.lecreditnon{
+   float: right;
+   font-size: 45px;
+   margin-bottom: 20px;
+   font-weight: bold;
+   color: rgb(157, 157, 157);
+}

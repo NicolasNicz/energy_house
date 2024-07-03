@@ -61,11 +61,41 @@ include ("header.php");
                     <h2 style="text-align:center;">Credit Actuel</h2>
                     <p class="credit"><?=$nbcredit?></p>
                 </section>
+
+                <section>
+                    <h2>Utilisez votre crédit</h2>
+                
+                    <div id="widget-category-container">
+                        <a class="category-container" href="#">
+                        🔆Réductions sur les Factures d'Énergie
+                        </a>
+                        <a class="category-container" href="#">
+                        📺Réductions Équipements Énergétiques
+                    </a>
+                    <a class="category-container" href="#">
+                        🛴Produits écologiques
+                    </a>
+                    <a class="category-container" href="#">
+                        🎁Cartes-cadeaux
+                    </a>
+                    <a class="category-container" href="#">
+                        💵Billets pour des événements locaux
+                    </a>
+
+                    
+
+                    
+                    </div>
+                </section>
+
+
+
                 <section id="about">
-                    <h2>Hier </h2>
+                    <h2>✅ Dépassez vos prédictions ! </h2>
                     <?php if ($dif_hier>=0){
-                        echo "Félicitation ! Hier, vous avez consommés <b> $dif_hier Watt</b> en moins que prévu par rapport aux prédictions! <br>";
-                        echo "vous avez gagner $difcredit de crédits !";
+                         echo "<b class='lecredit'> ↪ + $difcredit </b>";
+                        echo "<br>Félicitation ! Hier, vous avez consommés <b> 126 Watt</b> en moins que prévu par rapport aux prédictions pour Juin! <br>";
+                       
 
                     }else{
                         $difafficher = $dif_hier - $dif_hier*2;
@@ -76,9 +106,35 @@ include ("header.php");
                     }?>
                     
                 </section>
-                <section id="services">
-                    <h2>Astuce du jour !</h2>
-                    <p><?=$le_tip_of_day?></p>
+
+
+
+                <section>
+                    <h2>✅ Faite partie du top français !</h2>
+                    <b class='lecredit'> ↪ + 25</b>
+                    <p>Vous faites partie des 10% des français qui consomme le moins en Mai ! (230 kWh)</p>
+                </section>
+
+                <section>
+                    <h2>✅ Restez en dessous des 150 Watteur</h2>
+                    <b class='lecredit'> ↪ + 5</b>
+                    <p>Vous avez respecté l'appel d'offre d'effacement de 150 Watteur en 2 heures (de 18h à 22h)</p>
+                    
+                </section>
+
+
+                <section>
+                    <h2>🔲 Restez en dessous des 300 Watteur</h2>
+                    <b class='lecreditnon'> + 10</b>
+                    <p>Vous devez respecté l'appel d'offre d'effacement de 300 Watteur en 4 heures (de 18h à 22h)</p>
+                    
+                </section>
+
+                <section>
+                    <h2>🔲 Un 14 juillet sobre !</h2>
+                    <b class='lecreditnon'> + 20</b>
+                    <p>Le 14 juillet prochain consommez moins de 7 000 Watteur (de 0h à 23h59)</p>
+                    
                 </section>
             </main>
         </div>
