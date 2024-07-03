@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le : mar. 02 juil. 2024 à 10:27
+-- Généré le : mar. 02 juil. 2024 à 22:15
 -- Version du serveur : 10.6.5-MariaDB
 -- Version de PHP : 8.0.13
 
@@ -18,8 +18,145 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de données : `electric`
+-- Base de données : `energy_data`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `credit`
+--
+
+DROP TABLE IF EXISTS `credit`;
+CREATE TABLE IF NOT EXISTS `credit` (
+  `id` int(10) NOT NULL,
+  `nb_credit` int(255) NOT NULL,
+  `maj` date NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Déchargement des données de la table `credit`
+--
+
+INSERT INTO `credit` (`id`, `nb_credit`, `maj`) VALUES
+(1, 80, '2024-07-01');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `electricity_saving_tips`
+--
+
+DROP TABLE IF EXISTS `electricity_saving_tips`;
+CREATE TABLE IF NOT EXISTS `electricity_saving_tips` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `tip` text NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=98 DEFAULT CHARSET=latin1;
+
+--
+-- Déchargement des données de la table `electricity_saving_tips`
+--
+
+INSERT INTO `electricity_saving_tips` (`id`, `tip`) VALUES
+(1, 'Éteignez les lumières lorsque vous quittez une pièce.'),
+(2, 'Utilisez des ampoules LED à faible consommation d\'énergie.'),
+(3, 'Désactivez les appareils électroniques lorsqu\'ils ne sont pas utilisés.'),
+(4, 'Utilisez des multiprises avec interrupteur pour couper l\'alimentation facilement.'),
+(5, 'Réglez votre réfrigérateur à une température appropriée pour éviter la surconsommation.'),
+(6, 'Dégivrez régulièrement votre réfrigérateur et congélateur.'),
+(7, 'Utilisez des rideaux ou des stores pour bloquer la chaleur du soleil en été.'),
+(8, 'Isolez votre maison pour réduire les pertes de chaleur en hiver.'),
+(9, 'Utilisez un thermostat programmable pour réguler la température de votre maison.'),
+(10, 'Prenez des douches plus courtes pour réduire la consommation d\'eau chaude.'),
+(11, 'Lavez vos vêtements à l\'eau froide lorsque cela est possible.'),
+(12, 'Faites sécher vos vêtements à l\'air libre plutôt qu\'au sèche-linge.'),
+(13, 'Utilisez des ventilateurs plutôt que la climatisation lorsque cela est possible.'),
+(14, 'Éteignez votre ordinateur lorsqu\'il n\'est pas utilisé.'),
+(15, 'Débranchez les chargeurs lorsqu\'ils ne sont pas utilisés.'),
+(16, 'Utilisez des appareils électroménagers économes en énergie.'),
+(17, 'Évitez d\'utiliser les appareils électroménagers pendant les heures de pointe.'),
+(18, 'Utilisez des couvertures supplémentaires pour réduire l\'utilisation du chauffage la nuit.'),
+(19, 'Utilisez des coupe-froid pour les portes et fenêtres pour éviter les courants d\'air.'),
+(20, 'Entretenez régulièrement votre système de chauffage pour qu\'il fonctionne efficacement.'),
+(21, 'Utilisez des détecteurs de mouvement pour les lumières extérieures.'),
+(22, 'Utilisez des appareils électroménagers à pleine charge pour maximiser leur efficacité.'),
+(23, 'Cuisinez avec des couvercles pour conserver la chaleur et réduire le temps de cuisson.'),
+(24, 'Utilisez des mijoteuses et des autocuiseurs pour économiser l\'énergie en cuisine.'),
+(25, 'Utilisez des minuteurs pour les appareils électriques pour éviter qu\'ils ne restent allumés inutilement.'),
+(26, 'Réglez votre chauffe-eau à une température inférieure pour économiser de l\'énergie.'),
+(27, 'Utilisez des couvertures chauffantes plutôt que de chauffer toute la maison.'),
+(28, 'Installez des panneaux solaires pour produire votre propre électricité.'),
+(29, 'Utilisez des appareils électriques avec des réglages d\'économie d\'énergie.'),
+(30, 'Placez votre réfrigérateur loin des sources de chaleur.'),
+(31, 'Décongelez les aliments dans le réfrigérateur pour aider à le refroidir.'),
+(32, 'Évitez d\'ouvrir le four pendant la cuisson pour conserver la chaleur.'),
+(33, 'Utilisez un four à convection pour cuire les aliments plus rapidement et à une température plus basse.'),
+(34, 'Utilisez des ampoules solaires pour l\'éclairage extérieur.'),
+(35, 'Installez des variateurs de lumière pour ajuster l\'éclairage selon les besoins.'),
+(36, 'Utilisez des prises intelligentes pour contrôler les appareils à distance.'),
+(37, 'Profitez de la lumière naturelle pendant la journée pour réduire l\'utilisation des lumières.'),
+(38, 'Utilisez des miroirs pour refléter la lumière naturelle dans toute la maison.'),
+(39, 'Installez des fenêtres à double vitrage pour améliorer l\'isolation.'),
+(40, 'Utilisez des appareils certifiés Energy Star.'),
+(41, 'Programmez votre thermostat pour abaisser la température pendant la nuit ou lorsque vous n\'êtes pas à la maison.'),
+(42, 'Utilisez des tapis pour isoler les sols et conserver la chaleur.'),
+(43, 'Fermez les portes des pièces inutilisées pour réduire la zone à chauffer ou à refroidir.'),
+(44, 'Réparez les fuites d\'air autour des fenêtres et des portes.'),
+(45, 'Utilisez des appareils à haute efficacité énergétique pour le chauffage et la climatisation.'),
+(46, 'Couvrez les casseroles et les poêles pendant la cuisson pour conserver la chaleur.'),
+(47, 'Utilisez un lave-vaisselle au lieu de laver la vaisselle à la main pour économiser l\'eau chaude.'),
+(48, 'Installez des capteurs de lumière du jour pour ajuster automatiquement l\'éclairage.'),
+(49, 'Utilisez des films isolants pour les fenêtres en hiver.'),
+(50, 'Choisissez des appareils électroménagers de taille adaptée à vos besoins.'),
+(51, 'Ne surchargez pas le réfrigérateur ou le congélateur pour qu\'ils fonctionnent efficacement.'),
+(52, 'Placez des plantes d\'intérieur pour améliorer la qualité de l\'air et réduire le besoin de ventilation.'),
+(53, 'Utilisez des stores ou des volets pour réguler la température intérieure.'),
+(54, 'Faites réviser régulièrement vos appareils de chauffage et de climatisation.'),
+(55, 'Utilisez des rideaux thermiques pour isoler les fenêtres.'),
+(56, 'Optez pour des appareils sans fil pour éviter les pertes d\'énergie des fils électriques.'),
+(57, 'Utilisez des robinets et des douches économes en eau pour réduire la consommation d\'eau chaude.'),
+(58, 'Installez des panneaux réfléchissants derrière les radiateurs pour diriger la chaleur dans la pièce.'),
+(59, 'Réduisez l\'utilisation de la cheminée pour éviter les pertes de chaleur.'),
+(60, 'Choisissez des appareils ménagers avec des options de veille ou d\'arrêt automatique.'),
+(61, 'Utilisez des détecteurs de mouvement pour les éclairages intérieurs.'),
+(62, 'Programmez vos appareils électriques pour qu\'ils fonctionnent pendant les heures creuses.'),
+(63, 'Optez pour des couleurs claires pour les murs et les plafonds pour maximiser la réflexion de la lumière.'),
+(64, 'Utilisez des ampoules intelligentes qui peuvent être contrôlées via une application mobile.'),
+(65, 'Vérifiez l\'état de l\'isolation de votre grenier et de vos murs.'),
+(66, 'Utilisez des produits de nettoyage à froid plutôt qu\'à chaud.'),
+(67, 'Utilisez un séchoir rotatif pour sécher les vêtements à l\'air libre.'),
+(68, 'Assurez-vous que les joints de votre réfrigérateur sont en bon état.'),
+(69, 'Fermez les rideaux la nuit pour conserver la chaleur intérieure.'),
+(70, 'Utilisez des ventilateurs de plafond pour faire circuler l\'air chaud en hiver.'),
+(71, 'Évitez de surcharger les appareils électroménagers pour qu\'ils fonctionnent efficacement.'),
+(72, 'Débranchez les appareils électriques en cas de longue absence.'),
+(73, 'Utilisez des ampoules avec détecteur de mouvement pour les couloirs et les escaliers.'),
+(74, 'Nettoyez régulièrement les filtres de vos appareils de chauffage et de climatisation.'),
+(75, 'Utilisez des câbles d\'alimentation courts pour réduire les pertes d\'énergie.'),
+(76, 'Privilégiez les cuissons rapides comme le grill ou le micro-ondes.'),
+(77, 'Utilisez des couvertures épaisses pour réduire l\'utilisation du chauffage.'),
+(78, 'Choisissez des appareils avec des options d\'économie d\'énergie.'),
+(79, 'Utilisez des lampes solaires pour les jardins et les allées.'),
+(80, 'Faites sécher vos cheveux à l\'air libre plutôt qu\'avec un sèche-cheveux.'),
+(81, 'Réduisez l\'utilisation de l\'éclairage décoratif non essentiel.'),
+(82, 'Utilisez des minuteries pour automatiser l\'éclairage extérieur.'),
+(83, 'Installez des panneaux réfléchissants pour maximiser l\'efficacité des radiateurs.'),
+(84, 'Utilisez des appareils électriques multifonctions pour réduire la consommation globale.'),
+(85, 'Couvrez les aliments dans le réfrigérateur pour qu\'ils se conservent mieux et utilisent moins d\'énergie.'),
+(86, 'Utilisez des robinets à débit réduit pour économiser l\'eau chaude.'),
+(87, 'Optimisez la disposition de vos meubles pour améliorer la circulation de l\'air.'),
+(88, 'Utilisez des systèmes de domotique pour contrôler l\'énergie à distance.'),
+(89, 'Isolez les conduites d\'eau chaude pour réduire les pertes de chaleur.'),
+(90, 'Utilisez des poêles et casseroles adaptées à la taille des brûleurs pour maximiser l\'efficacité.'),
+(91, 'Privilégiez les cuissons au four sur plusieurs niveaux pour optimiser l\'énergie.'),
+(92, 'Utilisez des écrans de veille économes en énergie pour vos ordinateurs.'),
+(93, 'Évitez de laisser les appareils en mode veille prolongée.'),
+(94, 'Réduisez la température de chauffage pendant la nuit et lorsque vous êtes absent.'),
+(95, 'Utilisez des thermostats d\'ambiance pour contrôler la température de chaque pièce.'),
+(96, 'Installez des volets isolants pour les fenêtres exposées au froid.'),
+(97, 'Choisissez des matériaux de construction isolants pour réduire la consommation énergétique.');
 
 -- --------------------------------------------------------
 
@@ -34,7 +171,7 @@ CREATE TABLE IF NOT EXISTS `energy_data` (
   `Predictions` float DEFAULT NULL,
   `Actuals` float DEFAULT NULL,
   PRIMARY KEY (`ID`)
-) ENGINE=MyISAM AUTO_INCREMENT=6743 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=6744 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `energy_data`
@@ -5805,7 +5942,8 @@ INSERT INTO `energy_data` (`ID`, `Temps`, `Predictions`, `Actuals`) VALUES
 (6739, '2024-07-05 23:56:00', 6.30229, 3.56238),
 (6740, '2024-07-05 23:57:00', 2.27332, 0.0889602),
 (6741, '2024-07-05 23:58:00', 8.28082, 3.6589),
-(6742, '2024-07-05 23:59:00', 5.37319, 5.63821);
+(6742, '2024-07-05 23:59:00', 5.37319, 5.63821),
+(6743, '2024-07-01 19:22:18', 12, 56);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
