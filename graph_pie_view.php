@@ -7,12 +7,13 @@ include 'header.php';
 
     <div id="widget-category-container">
         <a class="category-container btnChart" name="last_week" href="/energy_house/graph_pie_view.php?t=last_week">Dernière semaine</a>
+        <a class="category-container btnChart" name="last_day" href="/energy_house/graph_pie_view.php?t=last_day">Dernier jour</a>
         <a class="category-container btnChart" name="last_hour" href="/energy_house/graph_pie_view.php?t=last_hour">Dernière heure</a>
     </div>
     <script src="https://cdn.plot.ly/plotly-2.32.0.min.js" charset="utf-8"></script>
 
     <div class="widget-container center">
-    <div id="myDiv" name="myDiv" class="myDiv"></div>
+    <div id="myDiv" name="myDiv" class="myDiv" style="z-index: 0;"></div>
 
     <script src="https://cdn.plot.ly/plotly-2.32.0.min.js" charset="utf-8"></script>
 <script>
@@ -29,6 +30,9 @@ include 'header.php';
                 {
                     if($_GET["t"] == "last_week"){
                         $where = "WHERE DATE(Temps) >= DATE_SUB(NOW(), INTERVAL 7 DAY)";
+                    }
+                    else if($_GET["t"] == "last_day"){
+                        $where = "WHERE DATE(Temps) >= DATE_SUB(NOW(), INTERVAL 1 DAY)";
                     }
                     else if($_GET["t"] == "last_hour"){
                         $where = "WHERE DATE(Temps) >= DATE_SUB(NOW(), INTERVAL 1 HOUR)";
@@ -125,7 +129,10 @@ include 'header.php';
         }
     }];
 
-    Plotly.newPlot("myDiv", datas, layout);
+    var configChart = {
+        responsive: true
+    }
+    Plotly.newPlot("myDiv", datas, layout, configChart);
 
 </script>
     </div>
