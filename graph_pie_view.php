@@ -15,7 +15,7 @@ include 'header.php';
     <div id="myDiv" name="myDiv" class="myDiv"></div>
 
     <script src="https://cdn.plot.ly/plotly-2.32.0.min.js" charset="utf-8"></script>
-<script>alert("salut");
+<script>
 
     var data;
     <?php
