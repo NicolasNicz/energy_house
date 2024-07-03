@@ -1,27 +1,25 @@
 <script src="https://cdn.plot.ly/plotly-2.32.0.min.js" charset="utf-8"></script>
-<div id="myDiv" name="myDiv" class="myDiv"></div>
 <script>
+
     var data;
     <?php
         include_once("connexion.php");
 
-        $start = "";
-        $end = "";
-        $between = "";
+        $where = "";
 
-        // if(isset($_GET)){
-        //     if(isset($_GET["start"]) && isset($_GET["end"])){
-        //         if($_GET["start"] != "" && $_GET["end"] != "")
-        //         {
-        //             $start = $_GET["start"];
-        //             $end = $_GET["end"];
-
-        //             match (expression) {
-        //                 '/match/' => "expression"
-        //             }
-        //         }
-        //     }
-        // }
+        if(isset($_GET)){
+            if(isset($_GET["t"])){
+                if($_GET["t"] != "")
+                {
+                    if($_GET["t"] == "last_week"){
+                        $where = "WHERE DATE(Temps) >= DATE_SUB(NOW(), INTERVAL 7 DAY)";
+                    }
+                    else if($_GET["t"] == "last_hour"){
+                        $where = "WHERE DATE(Temps) >= DATE_SUB(NOW(), INTERVAL 1 HOUR)";
+                    }
+                }
+            }
+        }
 
         $json = [];
         $valuesGood = [];
@@ -29,7 +27,7 @@
         $valuesVeryGood = [];
         $valuesMid = [];
 
-        $avgRow = mysqli_fetch_assoc(mysqli_query($connexion, "SELECT AVG(Actuals) as avg FROM energy_data"));
+        $avgRow = mysqli_fetch_assoc(mysqli_query($connexion, "SELECT AVG(Actuals) as avg FROM energy_data $where"));
         $avg = $avgRow["avg"];
 
         $config = json_decode(file_get_contents("config.json"), true);
@@ -111,5 +109,6 @@
         }
     }];
 
-    Plotly.newPlot('myDiv', datas, layout);
+    Plotly.newPlot("myDiv", datas, layout);
+
 </script>
