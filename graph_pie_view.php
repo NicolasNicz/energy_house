@@ -3,7 +3,7 @@ include 'header.php';
 ?>
 
 <main class="main-content">
-    <h1 class="title">Diagramme camembert</h1>
+    <h1 class="title">Diagramme circulaire</h1>
 
     <div id="widget-category-container">
         <a class="category-container">bouton</a>

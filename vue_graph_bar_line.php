@@ -53,7 +53,8 @@ include ("header.php");
 
 <div class="main-content">
     <header>
-      <h1>Votre Consommation Énergétique</h1>
+      <h1>Votre consommation <br>
+      Actuel / Prévu</h1>
     </header>
 
     <form method="POST" action="vue_graph_bar_line.php?type=heure">
