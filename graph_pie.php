@@ -35,8 +35,9 @@
         foreach ($valuesVeryGood as $key => $value) {
             $sum += $value;
         }
-        array_push($json, $sum/count($valuesVeryGood));
+        //array_push($json, $sum/count($valuesVeryGood));
         $nb = count($valuesVeryGood);
+        array_push($json, $nb);
         echo "console.log('Nb VG: $nb');";
 
         $total += $sum;
@@ -44,8 +45,9 @@
         foreach ($valuesGood as $key => $value) {
             $sum += $value;
         }
-        array_push($json, $sum/count($valuesGood));
+        //array_push($json, $sum/count($valuesGood));
         $nb = count($valuesGood);
+        array_push($json, $nb);
         echo "console.log('Nb G: $nb');";
 
         $total += $sum;
@@ -53,8 +55,9 @@
         foreach ($valuesMid as $key => $value) {
             $sum += $value;
         }
-        array_push($json, $sum/count($valuesMid));
+        //array_push($json, $sum/count($valuesMid));
         $nb = count($valuesMid);
+        array_push($json, $nb);
         echo "console.log('Nb M: $nb');";
 
         $total += $sum;
@@ -62,8 +65,9 @@
         foreach ($valuesBad as $key => $value) {
             $sum += $value;
         }
-        array_push($json, $sum/count($valuesBad));
+        //array_push($json, $sum/count($valuesBad));
         $nb = count($valuesBad);
+        array_push($json, $nb);
         echo "console.log('Nb B: $nb');";
 
         $total += $sum;
