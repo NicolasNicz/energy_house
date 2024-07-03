@@ -51,7 +51,7 @@ div#widget-category-container {
    justify-content: center;
 }
 
-.lecredit{
+.lecredit {
    float: right;
    font-size: 45px;
    margin-bottom: 20px;
@@ -59,10 +59,15 @@ div#widget-category-container {
    color: green;
 }
 
-.lecreditnon{
+.lecreditnon {
    float: right;
    font-size: 45px;
    margin-bottom: 20px;
    font-weight: bold;
    color: rgb(157, 157, 157);
+}
+
+.graph_aoe {
+   width: 75%;
+   height: 70dvh;
 }
