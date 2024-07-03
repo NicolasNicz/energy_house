@@ -1,29 +1,22 @@
-<!DOCTYPE html>
-<html lang="en">
+<?php
+include 'header.php';
+?>
 
-<head>
-    <meta charset="UTF-8">
-    <title>Energy House</title>
-    <!-- <link rel="stylesheet" href="styles/styles.css" /> -->
-    <link rel="stylesheet" href="styles/header.css" />
-    <link rel="stylesheet" href="styles/general.css" />
-</head>
+<main class="main-content">
+    <h1 class="title">Diagramme camembert</h1>
 
-<body>
+    <div id="widget-category-container">
+        <a class="category-container">bouton</a>
+        <a class="category-container">bouton</a>
+        <a class="category-container">bouton</a>
+    </div>
 
-    <main class="main-content">
-        <h1 class="title">Diagramme camembert</h1>
-
-        <div class="widget-category-container">
-            <a class="category-container">bouton</a>
-            <a class="category-container">bouton</a>
-            <a class="category-container">bouton</a>
-        </div>
-
-        <div class="widget-container">
-
-        </div>
-    </main>
+    <div class="widget-container center">
+        <?php
+        include 'graph_pie.php'
+        ?>
+    </div>
+</main>
 
 </body>
 
