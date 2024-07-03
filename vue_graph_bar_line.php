@@ -21,9 +21,7 @@ $tableauCAComplet = array
 
 
 foreach ($getGraphBarLineData as $CA){
-    if ($type == 'minute'){
-        $Date = $CA['Minute'];
-    } elseif ($type == 'heure') {
+    if ($type == 'heure') {
         $Date = $CA['Heure'];
     } else {
         $Date = $CA['Jour'];
@@ -56,9 +54,6 @@ include ("header.php");
   </a>
   <a class="category-container" id="a-programme" href="vue_graph_bar_line.php?type=heure">
   Heure
-  </a>
-  <a class="category-container" id="a-resp" href="vue_graph_bar_line.php?type=minute">
-  Minute
   </a>
 </div>
 
