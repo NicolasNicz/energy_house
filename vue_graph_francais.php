@@ -6,7 +6,8 @@
 
 <div class="main-content">
     <header>
-      <h1>Votre Consommation Énergétique</h1>
+      <h1>Votre consommation par rapport <br>
+      aux français</h1>
     </header>
 
     
@@ -99,7 +100,13 @@
             showlegend: false
         };
 
-        Plotly.newPlot('graph2', data, layout);
+        var config = {
+        displaylogo: false,
+        responsive: true, 
+        locale: 'fr',
+      }
+
+        Plotly.newPlot('graph2', data, layout, config);
     </script>
 
 
@@ -169,8 +176,17 @@
             },
             yaxis: {
                 title: 'Consommation (Wh)'
-            }
+            },
+            legend:{
+             orientation:"h"
+            },
         };
 
-        Plotly.newPlot('graph', data, layout);
+        var config = {
+        displaylogo: false,
+        responsive: true, 
+        locale: 'fr',
+      }
+
+        Plotly.newPlot('graph', data, layout, config);
     </script>

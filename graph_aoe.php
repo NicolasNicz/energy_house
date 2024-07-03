@@ -8,7 +8,7 @@
 </head>
 
 <body>
-    <div id="plot"></div>
+    <div id="plot" class="graph_aoe"></div>
     <script>
         // Données de consommation électrique
         const consommation = {
@@ -75,8 +75,6 @@
 
         // Configuration du layout
         const layout = {
-            height: 600,
-            width: 1200,
             shapes: shapes,
             xaxis: {
                 title: 'Temps',
@@ -87,8 +85,14 @@
             }
         };
 
+        // Configuration suplémentaire
+        var config = {
+            displaylogo: false,
+            responsive: true,
+        }
+
         // Tracer le diagramme
-        Plotly.newPlot('plot', [consommation], layout);
+        Plotly.newPlot('plot', [consommation], layout, config);
     </script>
 </body>
 
