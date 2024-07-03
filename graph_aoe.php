@@ -8,7 +8,7 @@
 </head>
 
 <body>
-    <div id="plot"></div>
+    <div id="plot" class="graph_aoe"></div>
     <script>
         // Données de consommation électrique
         const consommation = {
