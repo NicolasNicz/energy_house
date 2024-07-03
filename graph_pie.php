@@ -1,7 +1,4 @@
-<head>
-    <script src="https://cdn.plot.ly/plotly-2.32.0.min.js" charset="utf-8"></script>
-    <title></title>
-</head>
+<script src="https://cdn.plot.ly/plotly-2.32.0.min.js" charset="utf-8"></script>
 <div id="myDiv" name="myDiv" class="myDiv"></div>
 <script>
     var data;
