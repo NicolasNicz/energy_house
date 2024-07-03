@@ -22,8 +22,5 @@
 
                 <li><a href="graph_pie_view.php">Diagramme circulaire</a></li>
                 <li><a href="graph_aoe_view.php">Diagramme des appels d'offre d'effacement</a></li>
-                <li><a href="#services">Services</a></li>
-
-                <li><a href="#contact">Contact</a></li>
             </ul>
         </nav>
