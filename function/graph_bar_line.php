@@ -2,14 +2,20 @@
 function get_data_bar_line($type){
     require("connexion.php");
 
-    if ($type == 'minute'){
-        $WHERE = "WHERE DATE(Temps) = '2024-07-02'";
-        $format = '%H:%i';
-    } elseif ($type == 'heure') {
-        $WHERE = "WHERE DATE(Temps) = '2024-07-02'";
+    date_default_timezone_set('Europe/Paris');
+    
+    $currentDate = date('Y-m-d');
+    $currentTime = date('H:i:s');
+
+    $WHERE = "";
+    $format = '%D';
+
+    if ($type == 'heure') {
+        $WHERE = "WHERE DATE(Temps) = '$currentDate' AND TIME(Temps) <= '$currentTime'";
         $format = '%H';
-    } else{
-        $WHERE = "";
+    } elseif ($type == 'jour') {
+        // Si le type est 'jour', nous n'avons pas besoin de WHERE car nous voulons tout afficher jusqu'à aujourd'hui
+        $WHERE = "WHERE DATE(Temps) <= '$currentDate'";
         $format = '%D';
     }
     $AllCharacter=array();
