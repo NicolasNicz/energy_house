@@ -1,6 +1,7 @@
 <?php
 include ("function/graph_bar_line.php");
 
+
 if (isset($_GET['type'])){
     $type = $_GET['type'];
 }
@@ -35,10 +36,9 @@ foreach ($getGraphBarLineData as $CA){
     array_push($tableauCAComplet['Predictions'], $Predictions );
     array_push($tableauCAComplet['Actuals'], $Actuals);
 
-    include ("header.php");
+    
 }
-
-
+include ("header.php");
 
 ?>
 
