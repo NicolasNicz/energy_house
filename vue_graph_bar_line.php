@@ -223,6 +223,9 @@ include ("header.php");
         font:{
             color:'#000'
           },
+          legend:{
+             orientation:"h"
+            },
 
         plot_bgcolor: '<?=$background_graph?>',
         paper_bgcolor: '<?=$background_graph?>',
