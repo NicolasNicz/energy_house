@@ -11,7 +11,7 @@ function get_data_bar_line($type){
     $format = '%D';
 
     if ($type == 'heure') {
-        $WHERE = "WHERE DATE(Temps) = '$currentDate' AND TIME(Temps) <= '$currentTime'";
+        $WHERE = "WHERE DATE(Temps) = '$currentDate'";
         $format = '%H';
     } elseif ($type == 'jour') {
         // Si le type est 'jour', nous n'avons pas besoin de WHERE car nous voulons tout afficher jusqu'à aujourd'hui

@@ -122,18 +122,45 @@ include ("header.php");
                     
                 </section>
 
+                <section>
+                    <h2>🔲 Moins d'appareil branché</h2>
+                    <b class='lecreditnon'> 5</b>
+                    <p>Entre 12h et 14h, débranchez 2 de vos appareils </p>
+                    
+                </section>
 
                 <section>
                     <h2>🔲 Restez en dessous des 300 Watteur</h2>
-                    <b class='lecreditnon'> + 10</b>
+                    <b class='lecreditnon'> 10</b>
                     <p>Vous devez respecté l'appel d'offre d'effacement de 300 Watteur en 4 heures (de 18h à 22h)</p>
                     
                 </section>
 
                 <section>
+                    <h2>🔲 Utiliser des Équipements en Mode Éco</h2>
+                    <b class='lecreditnon'> 15</b>
+                    <p>Utiliser le mode éco sur le lave-linge ou le lave-vaisselle pendant une semaine.</p>
+                    
+                </section>
+
+                <section>
+                    <h2>🔲 Ventilation Naturelle</h2>
+                    <b class='lecreditnon'> 20</b>
+                    <p>Utiliser la ventilation naturelle cette semaine au lieu de la climatisation.</p>
+                    
+                </section>
+
+                <section>
                     <h2>🔲 Un 14 juillet sobre !</h2>
-                    <b class='lecreditnon'> + 20</b>
+                    <b class='lecreditnon'> 20</b>
                     <p>Le 14 juillet prochain consommez moins de 7 000 Watteur (de 0h à 23h59)</p>
+                    
+                </section>
+
+                <section>
+                    <h2>🔲 Installation de Panneaux Solaires</h2>
+                    <b class='lecreditnon'> 100</b>
+                    <p>Installez votre premier panneau solaire d'ici la fin de l'année</p>
                     
                 </section>
             </main>

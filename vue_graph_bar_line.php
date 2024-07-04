@@ -71,7 +71,13 @@ include ("header.php");
   </a>
 </div>
 
+<?php
 
+$current_hour = date('G');
+
+
+
+?>
 
 <div class="widget-container">
   <div id='FullRetardCAGraph' style="max-height:550px; width:97%; margin-bottom:5px"></div>
@@ -96,9 +102,9 @@ include ("header.php");
 
           $tableY = "yValue= [";
 
-          foreach ($tableauCAComplet['Actuals'] as $CA){
-            if (isset($CA)){
-              $LeCA=$CA;
+          foreach ($tableauCAComplet['Actuals'] as $key => $value){
+            if ($current_hour >= $key){
+              $LeCA=$value;
             }
             else $LeCA=0;
             $tableY .="$LeCA, ";
